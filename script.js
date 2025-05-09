@@ -1,4 +1,4 @@
 function showWelcome() {
-    alert("Welcome to Edunest! Let's learn together 🚀");
+    alert("Welcome to Edu Phoenix! Let's learn together 🚀");
   }
   
