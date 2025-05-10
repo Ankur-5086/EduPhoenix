@@ -29,7 +29,7 @@ body {
 }
 
 .logo {
-  height: 60px;
+  height: 120px;
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -112,7 +112,7 @@ body {
 
 .nav-links li a:hover {
   background: #da9100;
-  color: #000;
+  color: #000000;
   transform: scale(1.05);
 }
 
@@ -129,33 +129,45 @@ body {
   }
 }
 
-/* ===== MOBILE RESPONSIVENESS ===== */
+/* ===== MOBILE MENU FIX ===== */
 @media (max-width: 768px) {
   .dropdown-fullscreen {
-    padding-top: 80px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    width: 100vw;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
   }
-  
+
+  .nav-links {
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
   .nav-links li a {
     font-size: 1.4rem;
-    padding: 10px 15px;
+    padding: 12px 15px;
+    white-space: normal; /* Allows text wrapping */
+    text-align: center;
+    width: 100%;
   }
-  
+
   .close-btn {
-    top: 20px;
     right: 20px;
-    font-size: 2rem;
+    top: 20px;
   }
 }
-
 /* ===== HERO SECTION ===== */
 header {
   padding: 180px 20px 100px;
   text-align: center;
   margin-top: 80px;
+  color:#da9100;
 }
 
 .hero h1 {
-  color: #da9100;
+  color: #da9100
   font-size: 3rem;
   margin-bottom: 20px;
 }
@@ -172,8 +184,8 @@ button {
   margin-top: 1.5rem;
   padding: 12px 30px;
   background: transparent;
-  color: #da9100;
-  border: 2px solid #da9100;
+  color: #ffffff;
+  border: 2px solid #ffffff;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1.1rem;
@@ -181,13 +193,15 @@ button {
 }
 
 button:hover {
-  background-color: #da9100;
+  background-color: #002fff;
   color: white;
 }
 
 /* ===== MAIN CONTENT ===== */
 main {
   padding: 60px 20px;
+  color: #ffffff;
+  
 }
 
 /* ===== FOOTER ===== */
@@ -196,7 +210,7 @@ footer {
   padding: 30px 20px;
   text-align: center;
 }
-/* Add this to your existing CSS */
+
 .menu-toggle.active {
   display: none;
 }
