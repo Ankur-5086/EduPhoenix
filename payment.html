@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Purchase - Edu Phoenix</title>
+    <style>
+        /* ===== PAYMENT PAGE STYLES ===== */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .payment-container {
+            background-color: #1a1a1a;
+            border: 2px solid #da9100;
+            border-radius: 10px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(218, 145, 0, 0.3);
+        }
+
+        .payment-heading {
+            color: #da9100;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #da9100;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            border: 1px solid #da9100;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .subject-list {
+            margin: 20px 0;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .subject-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+            color: #da9100;
+        }
+
+        .submit-btn {
+            background-color: #da9100;
+            color: #000;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #ffd700;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h1 class="payment-heading">Complete Your Purchase</h1>
+        
+        <div class="form-group">
+            <label for="whatsapp">WhatsApp Number</label>
+            <input type="tel" id="whatsapp" placeholder="Enter WhatsApp number with country code">
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email address">
+        </div>
+        
+        <div class="form-group">
+            <label for="subject">Select Subject</label>
+            <select id="subject">
+                <option value="" disabled selected>Choose a subject</option>
+                <option value="math">Mathematics (₹2000)</option>
+                <option value="physics">Physics (₹2000)</option>
+                <option value="chemistry">Chemistry (₹2000)</option>
+                <option value="biology">Biology (₹2000)</option>
+                <option value="english">English (₹2000)</option>
+            </select>
+        </div>
+        
+        <div class="subject-list">
+            <div class="subject-item">
+                <span>Selected Subject:</span>
+                <span>₹2000</span>
+            </div>
+            <div class="total">
+                Total: ₹2000
+            </div>
+        </div>
+        
+        <button class="submit-btn">Proceed to Payment</button>
+    </div>
+
+    <script>
+        // Update selected subject and total
+        document.getElementById('subject').addEventListener('change', function() {
+            const subjectName = this.options[this.selectedIndex].text;
+            const price = '₹2000';
+            
+            document.querySelector('.subject-item span:first-child').textContent = 
+                'Selected Subject: ' + subjectName.split(' (')[0];
+            document.querySelector('.subject-item span:last-child').textContent = price;
+            document.querySelector('.total').textContent = 'Total: ' + price;
+        });
+    </script>
+</body>
+</html>
