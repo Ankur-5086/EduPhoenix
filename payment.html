@@ -55,25 +55,31 @@
             font-size: 1rem;
         }
 
-        .subject-list {
-            margin: 20px 0;
-            border-top: 1px solid #333;
-            padding-top: 20px;
+        .chapter-selection {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #222;
+            border-radius: 5px;
+            border: 1px solid #444;
         }
 
-        .subject-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #333;
+        .total-section {
+            margin: 25px 0;
+            border-top: 1px solid #333;
+            padding-top: 20px;
         }
 
         .total {
             font-size: 1.2rem;
             font-weight: bold;
             text-align: right;
-            margin-top: 20px;
             color: #da9100;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .submit-btn {
@@ -86,13 +92,31 @@
             font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 20px;
             transition: all 0.3s ease;
+            flex: 2;
+        }
+
+        .cancel-btn {
+            background-color: #333;
+            color: #da9100;
+            border: 1px solid #da9100;
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
         }
 
         .submit-btn:hover {
             background-color: #ffd700;
             transform: translateY(-2px);
+        }
+
+        .cancel-btn:hover {
+            background-color: #444;
         }
     </style>
 </head>
@@ -102,49 +126,91 @@
         
         <div class="form-group">
             <label for="whatsapp">WhatsApp Number</label>
-            <input type="tel" id="whatsapp" placeholder="Enter WhatsApp number with country code">
+            <input type="tel" id="whatsapp" placeholder="Enter WhatsApp number with country code" required>
         </div>
         
         <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="Enter your email address">
+            <input type="email" id="email" placeholder="Enter your email address" required>
         </div>
         
         <div class="form-group">
             <label for="subject">Select Subject</label>
-            <select id="subject">
+            <select id="subject" required>
                 <option value="" disabled selected>Choose a subject</option>
-                <option value="math">Mathematics (₹2000)</option>
-                <option value="physics">Physics (₹2000)</option>
                 <option value="chemistry">Chemistry (₹2000)</option>
-                <option value="biology">Biology (₹2000)</option>
-                <option value="english">English (₹2000)</option>
+                <option value="physics">Physics (₹2000)</option>
+                <option value="math">Mathematics (₹2000)</option>
             </select>
         </div>
         
-        <div class="subject-list">
-            <div class="subject-item">
-                <span>Selected Subject:</span>
-                <span>₹2000</span>
-            </div>
-            <div class="total">
-                Total: ₹2000
-            </div>
+        <div class="form-group">
+            <label for="chapter">Select Chapter</label>
+            <select id="chapter" required>
+                <option value="" disabled selected>First choose a subject</option>
+            </select>
         </div>
         
-        <button class="submit-btn">Proceed to Payment</button>
+        <div class="total-section">
+            <div class="total">Total: ₹2000</div>
+        </div>
+        
+        <div class="button-group">
+            <button class="submit-btn">Proceed to Payment</button>
+            <button class="cancel-btn">Cancel</button>
+        </div>
     </div>
 
     <script>
-        // Update selected subject and total
+        // Chapter data
+        const chapters = {
+            chemistry: [
+                "Atomic Structure", "Chemical Bonding", "Thermodynamics",
+                "Organic Chemistry", "Chemical Kinetics", "Electrochemistry",
+                "Solutions", "Solid State", "Surface Chemistry", "Metallurgy"
+            ],
+            physics: [
+                "Mechanics", "Thermodynamics", "Electromagnetism",
+                "Optics", "Modern Physics"
+            ],
+            math: [
+                "Algebra", "Geometry", "Trigonometry",
+                "Calculus", "Statistics"
+            ]
+        };
+
+        // Subject selection handler
         document.getElementById('subject').addEventListener('change', function() {
-            const subjectName = this.options[this.selectedIndex].text;
-            const price = '₹2000';
+            const subject = this.value;
+            const chapterSelect = document.getElementById('chapter');
             
-            document.querySelector('.subject-item span:first-child').textContent = 
-                'Selected Subject: ' + subjectName.split(' (')[0];
-            document.querySelector('.subject-item span:last-child').textContent = price;
-            document.querySelector('.total').textContent = 'Total: ' + price;
+            // Clear existing options
+            chapterSelect.innerHTML = '';
+            
+            // Add default option
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.textContent = 'Select chapter';
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            chapterSelect.appendChild(defaultOption);
+            
+            // Add chapters for selected subject
+            if (subject) {
+                chapters[subject].forEach(chapter => {
+                    const option = document.createElement('option');
+                    option.value = chapter.toLowerCase().replace(' ', '-');
+                    option.textContent = chapter;
+                    chapterSelect.appendChild(option);
+                });
+            }
+        });
+
+        // Cancel button handler
+        document.querySelector('.cancel-btn').addEventListener('click', function() {
+            if(confirm('Are you sure you want to cancel?')) {
+                window.location.href = 'buy_course.html'; // Change to your courses page
+            }
         });
     </script>
 </body>
