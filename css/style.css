@@ -161,15 +161,20 @@ body {
 /* ===== HERO SECTION ===== */
 header {
   padding: 180px 20px 100px;
-  text-align: center;
+  text-align: center; 
   margin-top: 80px;
   color:#da9100;
+}
+
+.hero-content {
+  text-align: center;
 }
 
 .hero h1 {
   color: #da9100;
   font-size: 3rem;
   margin-bottom: 20px;
+
 }
 
 .hero p {

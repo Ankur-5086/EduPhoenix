@@ -55,7 +55,7 @@
 }
 
 .course-card.featured {
-  border-color: #ffd700;
+  border-color: #da9100;
   box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
 }
 
@@ -75,7 +75,7 @@
 }
 
 .course-card.featured .course-badge {
-  background: #ffd700;
+  background: #da9100;
 }
 
 .course-card h3 {
@@ -128,27 +128,6 @@
   top: 1px;
 }
 
-.buy-btn {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  background: #da9100;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.buy-btn:hover {
-  background: #ffd700;
-  transform: scale(1.02);
-  box-shadow: 0 5px 15px rgba(218, 145, 0, 0.4);
-}
 
 .payment-options {
   text-align: center;
